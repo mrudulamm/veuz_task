@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Edit Employee: {{ employeee.name }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {% for custom_field in custom_fields %}
+        <label>{{ custom_field.label }}</label>
+        <input type="text" name="custom_field_{{ custom_field.id }}"
+               value="{% for employee_custom_field in employee_custom_fields %}
+                        {% if employee_custom_field.custom_field.id == custom_field.id %}
+                            {{ employee_custom_field.value }}
+                        {% endif %}
+                      {% endfor %}">
+    {% endfor %}
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

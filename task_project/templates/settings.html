@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Settings</h1>
+<ul>
+    {% for custom_field in custom_fields %}
+        <li>{{ custom_field.label }} ({{ custom_field.get_field_type_display }})</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_custom_field' %}">Add Custom Field</a>
+
+</body>
+</html>
